@@ -18,6 +18,12 @@ class PagesController extends Controller
       return view('contactos');
     }
 
+    //mensajes:
+    public function mensajes(Request $request)
+    {
+      return $request->all();
+    }
+
     //saludos:
     public function saludos($nombre = "Magufo")
     {
