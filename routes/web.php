@@ -9,10 +9,14 @@ Route::get('/', ['as'=> 'home', function(){
 }]);
 
 Route::get('contacto', ['as' => 'contactos', function(){
-  return "Sección de contactos";
+  return view('contactos');
 }]);
 
 //ruta a la que se le envía un parámetro:
 Route::get('saludos/{nombre?}', ['as'=>'saludos', function($nombre = "Magufo"){
-  return view('saludo', compact('nombre'));
+  $html = "<h2>Contenido html</h2>";
+  $consolas = ["Play", "XBOX", "Nintendo"];
+  //$consolas =[];
+
+  return view('saludo', compact('nombre', 'html', 'consolas'));
 }])->where('nombre', "[A-Za-z]+");
