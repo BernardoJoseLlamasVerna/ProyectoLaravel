@@ -3,7 +3,7 @@
 @section('contenido')
   <h1>Mensaje de {{$message->nombre}}</h1>
 
-  <form method="post" action="{{route('messages.update', $message->id)}}">
+  <form method="post" action="{{route('mensajes.update', $message->id)}}">
     {!! method_field('PUT') !!}
     {!! csrf_field() !!}
     <p><label for="nombre">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Message;
 use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -12,7 +13,10 @@ class MessagesController extends Controller
     public function index()
     {
         //Para recuperar todos los mensajes:
-        $messages = DB::table('messages')->get();
+        //ELOQUENT:
+        //$messages = DB::table('messages')->get();
+        //ORM:
+        $messages = Message::all();
 
         return view('messages.index', compact('messages'));
     }
@@ -25,22 +29,28 @@ class MessagesController extends Controller
     public function store(Request $request)
     {
       //Guardar Mensaje:
-      DB::table('messages')->insert([
+      //ELOQUENT:
+      /*DB::table('messages')->insert([
         "nombre"=>$request->input('nombre'),
         "email"=>$request->input('email'),
         "mensaje"=>$request->input('mensaje'),
         "created_at"=>Carbon::now(),
         "updated_at"=>Carbon::now(),
-      ]);
+      ]);*/
+      //ORM:
+      Message::create($request->all());
 
       //Redireccionar:
-      return redirect()->route('messages.index');
+      return redirect()->route('mensajes.index');
     }
 
     public function show($id)
     {
       //Con el id buscamos en la BBDD el mensaje en cuestión:
-      $message = DB::table('messages')->where('id', $id)->first();
+      //ELOQUENT:
+      /*$message = DB::table('messages')->where('id', $id)->first();*/
+      //ORM:
+      $message = Message::findOrFail($id);
 
       return view('messages.show', compact('message'));
     }
@@ -48,7 +58,10 @@ class MessagesController extends Controller
     public function edit($id)
     {
         //editamos un mensaje que enviamos a la página de editar:
-        $message = DB::table('messages')->where('id', $id)->first();
+        //ELOQUENT:
+        /*$message = DB::table('messages')->where('id', $id)->first();*/
+        //ORM:
+        $message = Message::findOrFail($id);
 
         return view('messages.edit', compact('message'));
     }
@@ -56,23 +69,29 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
         //actualizar:
-        DB::table('messages')->where('id', $id)->update([
+        //ELOQUENT:
+        /*DB::table('messages')->where('id', $id)->update([
           "nombre"=>$request->input('nombre'),
           "email"=>$request->input('email'),
           "mensaje"=>$request->input('mensaje'),
           "updated_at"=>Carbon::now(),
-        ]);
+        ]);*/
+        //ORM:
+        Message::findOrFail($id)->update($request->all());
         //Redireccionar:
-        return redirect()->route('messages.index');
+        return redirect()->route('mensajes.index');
     }
 
     public function destroy($id)
     {
         //eliminar mensaje: sacamos el mensaje que queremos eliminar mediante el id que se le pasa
         //                  por parámetro.
-        DB::table('messages')->where('id', $id)->delete();
-        
+        //ELOQUENT:
+        //DB::table('messages')->where('id', $id)->delete();
+        //ORM:
+        Message::findOrFail($id)->delete();
+
         //redireccionar:
-        return redirect()->route('messages.index');
+        return redirect()->route('mensajes.index');
     }
 }

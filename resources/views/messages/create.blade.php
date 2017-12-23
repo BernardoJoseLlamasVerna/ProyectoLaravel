@@ -4,7 +4,7 @@
   <h1>Contactos</h1>
   <h2>Escríbeme</h2>
 
-  <form method="post" action="{{route('messages.store')}}">
+  <form method="post" action="{{route('mensajes.store')}}">
     {!! csrf_field() !!}
     <p><label for="nombre">
       Nombre

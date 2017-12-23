@@ -32,10 +32,10 @@
            href="{{route('saludos', 'BerniPollas')}}">Saludos</a>
         {{--Contactos--}}
         <a class="{{ activeMenu('mensajes/create') }}"
-           href="{{route('messages.create')}}">Contactos</a>
+           href="{{route('mensajes.create')}}">Contactos</a>
         {{--Mensajes--}}
         <a class="{{ activeMenu('mensajes/index') }}"
-           href="{{route('messages.index')}}">Mensajes</a>
+           href="{{route('mensajes.index')}}">Mensajes</a>
       </nav>
     </header>
 

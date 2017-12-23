@@ -10,7 +10,7 @@ Route::get('saludos/{nombre?}', ['as'=>'saludos', 'uses' =>'PagesController@salu
 
 //CRUD:
 //index: se muestran todos los mensajes
-Route::get('mensajes', ['as'=>'messages.index', 'uses'=>'MessagesController@index']);
+/*Route::get('mensajes', ['as'=>'messages.index', 'uses'=>'MessagesController@index']);
 //create:
 Route::get('mensajes/create', ['as'=>'messages.create', 'uses'=>'MessagesController@create']);
 //store:
@@ -22,4 +22,6 @@ Route::get('mensajes/{id}/edit', ['as'=>'messages.edit', 'uses'=>'MessagesContro
 //update:
 Route::put('mensajes/{id}', ['as'=>'messages.update', 'uses'=>'MessagesController@update']);
 //delete:
-Route::delete('mensajes/{id}', ['as'=>'messages.destroy', 'uses'=>'MessagesController@destroy']);
+Route::delete('mensajes/{id}', ['as'=>'messages.destroy', 'uses'=>'MessagesController@destroy']);*/
+
+Route::resource('mensajes', 'MessagesController');
