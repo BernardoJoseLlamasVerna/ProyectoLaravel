@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -25,10 +26,12 @@ class MessagesController extends Controller
         "nombre"=>$request->input('nombre'),
         "email"=>$request->input('email'),
         "mensaje"=>$request->input('mensaje'),
+        "created_at"=>Carbon::now(),
+        "updated_at"=>Carbon::now(),
       ]);
 
       //Redireccionar:
-      return "Hecho";
+      return redirect()->route('messages.index');
     }
 
     public function show($id)

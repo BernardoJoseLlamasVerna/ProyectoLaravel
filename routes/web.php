@@ -9,6 +9,7 @@ Route::post('contacto', 'PagesController@mensajes');
 Route::get('saludos/{nombre?}', ['as'=>'saludos', 'uses' =>'PagesController@saludos']);
 
 //CRUD:
+Route::get('mensajes', ['as'=>'messages.index', 'uses'=>'MessagesController@index']);
 //create: llamamos a la ruta messages.create
 Route::get('mensajes/create', ['as'=>'messages.create', 'uses'=>'MessagesController@create']);
 //store: llamamos a la ruta messages.store
