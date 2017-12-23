@@ -7,6 +7,12 @@ use App\Http\Requests\CreateMessageRequest;
 
 class PagesController extends Controller
 {
+    //gestor de middlewares:
+    public function __construct()
+    {
+      $this->middleware('example', ['except'=>['home']]);
+    }
+
     //home:
     public function home()
     {

@@ -5,6 +5,7 @@
   <h2>Escríbeme</h2>
 
   <form method="post" action="contacto">
+    {!! csrf_field() !!}
     <p><label for="nombre">
       Nombre
       <input type="text" name="nombre" value={{ old('nombre') }}>
