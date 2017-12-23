@@ -9,8 +9,17 @@ Route::post('contacto', 'PagesController@mensajes');
 Route::get('saludos/{nombre?}', ['as'=>'saludos', 'uses' =>'PagesController@saludos']);
 
 //CRUD:
+//index: se muestran todos los mensajes
 Route::get('mensajes', ['as'=>'messages.index', 'uses'=>'MessagesController@index']);
-//create: llamamos a la ruta messages.create
+//create:
 Route::get('mensajes/create', ['as'=>'messages.create', 'uses'=>'MessagesController@create']);
-//store: llamamos a la ruta messages.store
+//store:
 Route::post('mensajes', ['as'=>'messages.store', 'uses'=>'MessagesController@store']);
+//show:
+Route::get('mensajes/{id}', ['as'=>'messages.show', 'uses'=>'MessagesController@show']);
+//edit:
+Route::get('mensajes/{id}/edit', ['as'=>'messages.edit', 'uses'=>'MessagesController@edit']);
+//update:
+Route::put('mensajes/{id}', ['as'=>'messages.update', 'uses'=>'MessagesController@update']);
+//delete:
+Route::delete('mensajes/{id}', ['as'=>'messages.destroy', 'uses'=>'MessagesController@destroy']);

@@ -31,8 +31,11 @@
         <a class="{{ activeMenu('saludos/*') }}"
            href="{{route('saludos', 'BerniPollas')}}">Saludos</a>
         {{--Contactos--}}
-        <a class="{{ activeMenu('contacto') }}"
+        <a class="{{ activeMenu('mensajes/create') }}"
            href="{{route('messages.create')}}">Contactos</a>
+        {{--Mensajes--}}
+        <a class="{{ activeMenu('mensajes/index') }}"
+           href="{{route('messages.index')}}">Mensajes</a>
       </nav>
     </header>
 
