@@ -10,7 +10,7 @@ class PagesController extends Controller
     //gestor de middlewares:
     public function __construct()
     {
-      $this->middleware('example', ['except'=>['home']]);
+      //$this->middleware('example', ['except'=>['home']]);
     }
 
     //home:

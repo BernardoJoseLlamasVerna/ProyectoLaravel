@@ -24,12 +24,15 @@
         }
       ?>
       <nav>
+        {{--Inicio--}}
         <a class="{{ activeMenu('/') }}"
            href="{{route('home')}}">Inicio</a>
+        {{--Saludos--}}
         <a class="{{ activeMenu('saludos/*') }}"
            href="{{route('saludos', 'BerniPollas')}}">Saludos</a>
+        {{--Contactos--}}
         <a class="{{ activeMenu('contacto') }}"
-           href="{{route('contactos')}}">Contactos</a>
+           href="{{route('messages.create')}}">Contactos</a>
       </nav>
     </header>
 

@@ -4,7 +4,7 @@
   <h1>Contactos</h1>
   <h2>Escríbeme</h2>
 
-  <form method="post" action="contacto">
+  <form method="post" action="{{route('messages.store')}}">
     {!! csrf_field() !!}
     <p><label for="nombre">
       Nombre
@@ -23,5 +23,5 @@
     </label></p>
     <p><input type="submit" value="Enviar"></p>
   </form>
-
+  <hr>
 @endsection
