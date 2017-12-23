@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateMessageRequest;
 
 class PagesController extends Controller
 {
@@ -19,8 +20,9 @@ class PagesController extends Controller
     }
 
     //mensajes:
-    public function mensajes(Request $request)
+    public function mensajes(CreateMessageRequest $request)
     {
+      //validación de los campos que se envían a través del formulario:
       return $request->all();
     }
 
