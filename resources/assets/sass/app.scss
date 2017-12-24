@@ -6,4 +6,22 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$color: #005400;
+
+nav{
+  width:100%;
+  display:flex;
+  justify-content: space-around;
+}
+
+.active{
+  text-decoration: none;
+  color: green;
+}
+.error{
+  color:red;
+  font-size:12px;
+}
