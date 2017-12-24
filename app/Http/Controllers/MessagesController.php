@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
+    function __construct()
+    {
+      $this->middleware('auth', ['except' => ['create', 'store'] ]);
+    }
+
     public function index()
     {
         //Para recuperar todos los mensajes:
@@ -41,7 +46,7 @@ class MessagesController extends Controller
       Message::create($request->all());
 
       //Redireccionar:
-      return redirect()->route('mensajes.index');
+      return redirect()->route('mensajes.create')->with('info', 'Recibido');
     }
 
     public function show($id)

@@ -28,14 +28,24 @@
         <a class="{{ activeMenu('/') }}"
            href="{{route('home')}}">Inicio</a>
         {{--Saludos--}}
-        <a class="{{ activeMenu('saludos/*') }}"
+        <a class="{{ activeMenu('saludos*') }}"
            href="{{route('saludos', 'BerniPollas')}}">Saludos</a>
         {{--Contactos--}}
         <a class="{{ activeMenu('mensajes/create') }}"
            href="{{route('mensajes.create')}}">Contactos</a>
-        {{--Mensajes--}}
-        <a class="{{ activeMenu('mensajes/index') }}"
-           href="{{route('mensajes.index')}}">Mensajes</a>
+        {{--Logout:checkeamos antes si hay un usuario autenticado--}}
+        @if (auth()->check())
+          {{--Mensajes--}}
+          <a class="{{ activeMenu('mensajes') }}"
+             href="{{route('mensajes.index')}}">Mensajes</a>
+          {{--Cerrar sesión--}}
+          <a href="/logout">Cerrar sesión {{auth()->user()->name}}</a>
+        @endif
+        {{--Login--}}
+        {{--evaluamos quién se inscribe en la app--}}
+        @if (auth()->guest())
+          <a class="{{ activeMenu('login') }}" href="/login">Login</a>
+        @endif
       </nav>
     </header>
 

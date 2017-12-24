@@ -1,10 +1,20 @@
 <?php
+
+//usuario de prueba para probar el login:
+/*Route::get('test', function(){
+  $user = new App\User;
+  $user->name = 'Cubiche';
+  $user->email = 'cubiche@gmail.com';
+  $user->password = bcrypt('123123');
+
+  //guardamos el usuario:
+  $user->save();
+  //retornamos el usuario:
+  return $user;
+});*/
+
 //home:
 Route::get('/', ['as'=> 'home', 'uses' => 'PagesController@home']);
-//contacto:
-Route::get('contacto', ['as' => 'contactos', 'uses' => 'PagesController@contactos']);
-//ruta para procesar el formulario:
-Route::post('contacto', 'PagesController@mensajes');
 //ruta a la que se le envía un parámetro:
 Route::get('saludos/{nombre?}', ['as'=>'saludos', 'uses' =>'PagesController@saludos']);
 
@@ -25,3 +35,10 @@ Route::put('mensajes/{id}', ['as'=>'messages.update', 'uses'=>'MessagesControlle
 Route::delete('mensajes/{id}', ['as'=>'messages.destroy', 'uses'=>'MessagesController@destroy']);*/
 
 Route::resource('mensajes', 'MessagesController');
+
+//ruta de autenticación:
+Route::get('login', 'Auth\LoginController@showLoginForm');
+//envío de credenciales para loggearse: se emplea la acción login
+Route::post('login', 'Auth\LoginController@login');
+//ruta de logout:
+Route::get('logout', 'Auth\LoginController@logout');
