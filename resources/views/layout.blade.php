@@ -77,5 +77,6 @@
       @yield('contenido')
       <footer>Copyright {{date('Y')}}</footer>
     </div>
+    <script type="/js/all.js"></script>
   </body>
 </html>
