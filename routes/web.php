@@ -13,6 +13,14 @@
   return $user;
 });*/
 
+//crear usuario de prueba:
+/*App\User::create([
+  'name' => 'Waffer',
+  'email' => 'waffer@gmail.com',
+  'password' => bcrypt('123'),
+  'role' => 'admin'
+]);*/
+
 //home:
 Route::get('/', ['as'=> 'home', 'uses' => 'PagesController@home']);
 //ruta a la que se le envía un parámetro:
@@ -35,6 +43,7 @@ Route::put('mensajes/{id}', ['as'=>'messages.update', 'uses'=>'MessagesControlle
 Route::delete('mensajes/{id}', ['as'=>'messages.destroy', 'uses'=>'MessagesController@destroy']);*/
 
 Route::resource('mensajes', 'MessagesController');
+Route::resource('usuarios', 'UsersController');
 
 //ruta de autenticación:
 Route::get('login', 'Auth\LoginController@showLoginForm');
