@@ -17,12 +17,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function role()
+    {
+      return $this->belongsTo(Role::class);
+    }
+
     //función para evaluar roles: pasamos un array de roles
     public function hasRoles(array $roles)
     {
       foreach ($roles as $role)
       {
-        if($this->role === $role)
+        if($this->role->name === $role)
         {
           return true;
         }

@@ -15,11 +15,15 @@
 
 //crear usuario de prueba:
 /*App\User::create([
-  'name' => 'Estudiante',
-  'email' => 'estudiante@gmail.com',
-  'password' => bcrypt('789'),
+  'name' => 'Otro Administrador',
+  'email' => 'admin2@gmail.com',
+  'password' => bcrypt('222'),
   'role' => 'estudiante'
 ]);*/
+
+Route::get('roles', function(){
+  return \App\Role::with('user')->get();
+});
 
 //home:
 Route::get('/', ['as'=> 'home', 'uses' => 'PagesController@home']);
