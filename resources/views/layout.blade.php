@@ -46,7 +46,8 @@
                  <li class="{{ activeMenu('mensajes*') }}">
                    <a href="{{ route('mensajes.index') }}">Mensajes</a>
                  </li>
-                 @if(auth()->user()->role === 'admin')
+                 {{--Mostramos el link de usuarios para el que tiene el role de admin--}}
+                 @if(auth()->user()->hasRoles(['admin', 'estudiante']))
                    <li class="{{ activeMenu('usuarios*') }}">
                      <a href="{{ route('usuarios.index') }}">Usuarios</a>
                    </li>

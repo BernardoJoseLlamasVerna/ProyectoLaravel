@@ -15,10 +15,10 @@
 
 //crear usuario de prueba:
 /*App\User::create([
-  'name' => 'Waffer',
-  'email' => 'waffer@gmail.com',
-  'password' => bcrypt('123'),
-  'role' => 'admin'
+  'name' => 'Estudiante',
+  'email' => 'estudiante@gmail.com',
+  'password' => bcrypt('789'),
+  'role' => 'estudiante'
 ]);*/
 
 //home:

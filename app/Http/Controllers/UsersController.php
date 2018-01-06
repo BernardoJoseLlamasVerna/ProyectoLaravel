@@ -9,7 +9,8 @@ class UsersController extends Controller
 {
     function __construct()
     {
-      $this->middleware('auth');
+      //roles:(lo_que_sea) le estamos diciendo qué parametro queremos que le aplique el middleware de 'roles'
+      $this->middleware(['auth', 'roles:admin, estudiante']);
     }
 
     public function index()
