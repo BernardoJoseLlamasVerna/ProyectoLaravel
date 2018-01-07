@@ -11,8 +11,8 @@ class UsersController extends Controller
     function __construct()
     {
       //roles:(lo_que_sea) le estamos diciendo qué parametro queremos que le aplique el middleware de 'roles'
-      $this->middleware('auth');
-      $this->middleware('roles:admin', ['except' =>['edit']]);
+      $this->middleware('auth', ['except' =>['show']]);
+      $this->middleware('roles:admin', ['except' =>['edit', 'update', 'show']]);
 
     }
 
@@ -35,12 +35,15 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('users.show', compact('user'));
     }
 
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $this->authorize('edit',$user);
 
         return view('users.edit', compact('user'));
     }
@@ -48,6 +51,7 @@ class UsersController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
+        $this->authorize($user);
         $user->update($request->all());
 
         return back()->with('info', 'Usuario actualizado');
@@ -55,6 +59,10 @@ class UsersController extends Controller
 
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->authorize($user);
+        $user->delete();
+
+        return back();
     }
 }
