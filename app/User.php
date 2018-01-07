@@ -19,6 +19,7 @@ class User extends Authenticatable
 
     public function roles()
     {
+      //pasamos como segundo parámetro el nombre de la tabla pivot: assigned_roles
       return $this->belongsToMany(Role::class, 'assigned_roles');
     }
 
