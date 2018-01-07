@@ -28,13 +28,14 @@ class User extends Authenticatable
     {
       foreach ($roles as $role)
       {
-        foreach ($this->roles as $userRole)
+        return $this->roles->pluck('name')->intersect($roles)->count();
+        /*foreach ($this->roles as $userRole)
         {
           if($userRole->name === $role)
           {
             return true;
           }
-        }
+        }*/
       }
       return false;
     }
