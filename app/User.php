@@ -44,4 +44,10 @@ class User extends Authenticatable
     {
       return $this->hasRoles(['admin', 'estudiante']);
     }
+
+    //función donde se define la relación de muchos de un usuario con varios mensajes
+    public function messages()
+    {
+      return $this->hasMany(Message::class);
+    }
 }

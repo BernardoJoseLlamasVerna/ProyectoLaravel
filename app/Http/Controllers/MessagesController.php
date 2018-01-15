@@ -43,7 +43,15 @@ class MessagesController extends Controller
         "updated_at"=>Carbon::now(),
       ]);*/
       //ORM:
-      Message::create($request->all());
+      $message = Message::create($request->all());
+
+      //evaluamos que el usuario se haya autenticado: el mensaje tendrá user_id asociado si está
+      //autenticado.
+      if(auth()->check())
+      {
+        //haciendo la evaluación llamamos a la función messages() definida en User:
+        auth()->user()->messages()->save($message);
+      }
 
       //Redireccionar:
       return redirect()->route('mensajes.create')->with('info', 'Recibido');

@@ -18,14 +18,22 @@
       @foreach ($messages as $message)
         <tr>
           <td>{{ $message->id }}</td>
+          @if ($message->user_id)
+            <td>
+              <a href="{{route('usuarios.show', $message->user_id)}}">
+                {{--dentro de $message accedemos al método user definido en el modelo Message
+                y después accedemos a "nombre"--}}
+                {{ $message->user->name }}
+              </a>
+            </td>
+            <td>{{ $message->user->email }}</td>
+          @else
+            <td>{{ $message->nombre }}</td>
+            <td>{{ $message->email }}</td>
+          @endif
           <td>
-            {{--al clickar sobre un nombre me lleva a su página show--}}
-            <a href="{{ route('mensajes.show', $message->id) }}">
-              {{ $message->nombre }}
-            </a>
+            <a href="{{ route('mensajes.show', $message->id) }}">{{ $message->mensaje }}</a>
           </td>
-          <td>{{ $message->email }}</td>
-          <td>{{ $message->mensaje }}</td>
           <td>
             <a class="btn btn-info btn-xs" href="{{ route('mensajes.edit', $message->id) }}">Editar</a>
             <form style="display:inline" method="post" action="{{ route('mensajes.destroy', $message->id) }}">
