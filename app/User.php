@@ -17,6 +17,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function setPasswordAttribute($password)
+    {
+      $this->attributes['password'] = bcrypt($password);
+    }
+
     public function roles()
     {
       //pasamos como segundo parámetro el nombre de la tabla pivot: assigned_roles

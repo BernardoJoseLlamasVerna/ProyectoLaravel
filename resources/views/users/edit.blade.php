@@ -8,17 +8,8 @@
   @endif
   <form method="post" action="{{route('usuarios.update', $user->id)}}">
     {!! method_field('PUT') !!}
-    {!! csrf_field() !!}
-    <p><label for="nombre">
-      Nombre
-      <input class="form-control" type="text" name="name" value={{ $user->name }}>
-      {!! $errors->first('name', '<span class=error>:message</span>') !!}
-    </label></p>
-    <p><label for="email">
-      Email
-      <input class="form-control" type="email" name="email" value={{ $user->email }}>
-      {!! $errors->first('email', '<span class=error>:message</span>') !!}
-    </label></p>
+    @include('users.form')
+
     <p><input class="btn btn-primary" type="submit" value="Enviar"></p>
   </form>
 @endsection
